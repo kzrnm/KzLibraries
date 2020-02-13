@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlerHistory", "EventHandlerHistory\EventHandlerHistory.csproj", "{2E71551C-ED1F-4217-8885-DDE6A0FD384A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHandlerHistory", "EventHandlerHistory\EventHandlerHistory.csproj", "{2E71551C-ED1F-4217-8885-DDE6A0FD384A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlerHistory.Tests", "EventHandlerHistory.Tests\EventHandlerHistory.Tests.csproj", "{8C71CA9C-FE8C-411A-9EEC-929D9C1FE577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHandlerHistory.Tests", "EventHandlerHistory.Tests\EventHandlerHistory.Tests.csproj", "{8C71CA9C-FE8C-411A-9EEC-929D9C1FE577}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KzWpfControl", "KzWpfControl\KzWpfControl.csproj", "{19955A8E-56C8-4D48-A169-E93851574035}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KzWpfControl", "KzWpfControl\KzWpfControl.csproj", "{19955A8E-56C8-4D48-A169-E93851574035}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sandbox", "sandbox\sandbox.csproj", "{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{19955A8E-56C8-4D48-A169-E93851574035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19955A8E-56C8-4D48-A169-E93851574035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19955A8E-56C8-4D48-A169-E93851574035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

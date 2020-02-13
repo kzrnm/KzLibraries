@@ -10,7 +10,7 @@
     <Description>My WPF Controls</Description>
 
     <PackageId>KzWpfControl</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>naminodarie</Authors>
     <Company>naminodarie</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
