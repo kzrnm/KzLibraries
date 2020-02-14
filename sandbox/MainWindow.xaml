@@ -10,12 +10,17 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
     <StackPanel>
         <ComboBox kz:ComboBoxBehavior.IsFirstEmpty="True">
             <ComboBoxItem>1</ComboBoxItem>
             <ComboBoxItem>2</ComboBoxItem>
             <ComboBoxItem>3</ComboBoxItem>
         </ComboBox>
-        <TextBox Text="foo" kz:TextBoxBehavior.SelectAllOnFocus="True"/>
+        <Separator Margin="2" />
+        <TextBlock Text="{Binding Text1}" />
+        <TextBox kz:TextBoxBehavior.SelectAllOnFocus="True" Text="{Binding Text1, UpdateSourceTrigger=PropertyChanged}" />
     </StackPanel>
 </Window>

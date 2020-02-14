@@ -24,5 +24,6 @@ namespace sandbox
         {
             InitializeComponent();
         }
+        private MainViewModel ViewModel => (MainViewModel)DataContext;
     }
 }
