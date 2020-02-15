@@ -1,22 +1,23 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace KzLibraries.KzWpfControl
 {
     public static class TextBoxBehavior
     {
+        #region SelectAllOnFocus
         public static bool GetSelectAllOnFocus(DependencyObject obj) => (bool)obj.GetValue(SelectAllOnFocusProperty);
         public static void SetSelectAllOnFocus(DependencyObject obj, bool value) => obj.SetValue(SelectAllOnFocusProperty, value);
-
         public static readonly DependencyProperty SelectAllOnFocusProperty =
             DependencyProperty.RegisterAttached(
                 "SelectAllOnFocus",
                 typeof(bool),
                 typeof(TextBoxBehavior),
                 new PropertyMetadata(false, SelectAllOnFocusChanged));
-
         private static void SelectAllOnFocusChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             if (obj is TextBoxBase textBox)
@@ -33,7 +34,6 @@ namespace KzLibraries.KzWpfControl
                 }
             }
         }
-
         private static void SelectAllOnFocus_GotFocus(object sender, RoutedEventArgs e)
         {
             if (sender is TextBoxBase textBox)
@@ -53,5 +53,6 @@ namespace KzLibraries.KzWpfControl
                 }
             }
         }
+        #endregion SelectAllOnFocus
     }
 }

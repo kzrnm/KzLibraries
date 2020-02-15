@@ -25,5 +25,10 @@ namespace sandbox
             InitializeComponent();
         }
         private MainViewModel ViewModel => (MainViewModel)DataContext;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Double1 = 2000.1001;
+        }
     }
 }

@@ -20,7 +20,8 @@
             <ComboBoxItem>3</ComboBoxItem>
         </ComboBox>
         <Separator Margin="2" />
-        <TextBlock Text="{Binding Text1}" />
-        <TextBox kz:TextBoxBehavior.SelectAllOnFocus="True" Text="{Binding Text1, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Text="{Binding Double1}" />
+        <Button Click="Button_Click" Content="Text→1.1" />
+        <kz:DoubleTextBox kz:TextBoxBehavior.SelectAllOnFocus="True" DoubleText="{Binding Double1, UpdateSourceTrigger=PropertyChanged}" />
     </StackPanel>
 </Window>

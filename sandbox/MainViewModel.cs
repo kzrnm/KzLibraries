@@ -9,11 +9,11 @@ namespace sandbox
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private string _Text1 = "Text1";
-        public string Text1
+        private double _Double1 = 13232231.012;
+        public double Double1
         {
-            set => SetProperty(ref _Text1, value);
-            get => _Text1;
+            set => SetProperty(ref _Double1, value);
+            get => _Double1;
         }
 
         #region INotifyPropertyChanged
