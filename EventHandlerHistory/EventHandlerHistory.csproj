@@ -9,15 +9,8 @@
     <Description>EventHandler's event history wrapper</Description>
 
     <PackageId>EventHandlerHistory</PackageId>
-    <Version>0.0.1</Version>
-    <Authors>naminodarie</Authors>
-    <Company>naminodarie</Company>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/naminodarie/KzLibraries</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/naminodarie/KzLibraries</RepositoryUrl>
+    <Version>0.0.2</Version>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>

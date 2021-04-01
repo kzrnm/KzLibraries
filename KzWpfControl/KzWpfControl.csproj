@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
@@ -10,16 +10,11 @@
     <Description>My WPF Controls</Description>
 
     <PackageId>KzWpfControl</PackageId>
-    <Version>0.0.3</Version>
-    <Authors>naminodarie</Authors>
-    <Company>naminodarie</Company>
+    <Version>0.0.4</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>wpf</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/naminodarie/KzLibraries</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/naminodarie/KzLibraries</RepositoryUrl>
+    
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
