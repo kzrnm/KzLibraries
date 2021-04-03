@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <RootNamespace>KzLibraries.EventHandlerHistory</RootNamespace>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFrameworks>netstandard1.0;netstandard2.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
 
     <Description>EventHandler's event history wrapper</Description>
 
     <PackageId>EventHandlerHistory</PackageId>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
   </PropertyGroup>
 
