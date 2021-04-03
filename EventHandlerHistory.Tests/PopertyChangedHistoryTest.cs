@@ -45,18 +45,31 @@ namespace KzLibraries.EventHandlerHistory
 
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Number)).Should().Be(0);
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Text)).Should().Be(0);
+            history.History.Should().BeEmpty();
             notifyPropertyChanged.Number = 2;
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Number)).Should().Be(1);
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Text)).Should().Be(0);
+            history.History.Should().Equal(
+                nameof(NotifyPropertyChanged.Number));
             notifyPropertyChanged.Text = "foo";
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Number)).Should().Be(1);
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Text)).Should().Be(1);
+            history.History.Should().Equal(
+                nameof(NotifyPropertyChanged.Number),
+                nameof(NotifyPropertyChanged.Text));
             notifyPropertyChanged.Number = 2;
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Number)).Should().Be(1);
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Text)).Should().Be(1);
+            history.History.Should().Equal(
+                nameof(NotifyPropertyChanged.Number),
+                nameof(NotifyPropertyChanged.Text));
             notifyPropertyChanged.Number = 0;
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Number)).Should().Be(2);
             history.GetPropertyChangedCount(nameof(NotifyPropertyChanged.Text)).Should().Be(1);
+            history.History.Should().Equal(
+                nameof(NotifyPropertyChanged.Number),
+                nameof(NotifyPropertyChanged.Text),
+                nameof(NotifyPropertyChanged.Number));
         }
 
         [Fact]

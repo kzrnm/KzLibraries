@@ -37,7 +37,9 @@ namespace KzLibraries.EventHandlerHistory
     {
         public PropertyChangedHistory(INotifyPropertyChanged notifyPropertyChanged)
         {
-            this.history = new Dictionary<string, Status>();
+            this.history = new List<string>();
+            this.History = new ReadOnlyCollection<string>(this.history);
+            this.statuses = new Dictionary<string, Status>();
             this.notifyPropertyChanged = notifyPropertyChanged;
 
             notifyPropertyChanged.PropertyChanged += this.NotifyPropertyChanged_PropertyChanged;
@@ -45,25 +47,27 @@ namespace KzLibraries.EventHandlerHistory
 
         private void NotifyPropertyChanged_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (this.history.TryGetValue(e.PropertyName, out var status))
+            this.history.Add(e.PropertyName);
+            if (this.statuses.TryGetValue(e.PropertyName, out var status))
                 status.Count++;
             else
-                this.history.Add(e.PropertyName, new Status(e.PropertyName, 1));
+                this.statuses.Add(e.PropertyName, new Status(e.PropertyName, 1));
         }
-
 
         private readonly INotifyPropertyChanged notifyPropertyChanged;
 
-        private readonly Dictionary<string, Status> history;
+        private readonly Dictionary<string, Status> statuses;
+        private readonly List<string> history;
+        public ReadOnlyCollection<string> History { get; }
 
 
-        int ICollection<KeyValuePair<string, int>>.Count => this.history.Count;
-        int IReadOnlyCollection<KeyValuePair<string, int>>.Count => this.history.Count;
+        int ICollection<KeyValuePair<string, int>>.Count => this.statuses.Count;
+        int IReadOnlyCollection<KeyValuePair<string, int>>.Count => this.statuses.Count;
 
-        IEnumerable<string> IReadOnlyDictionary<string, int>.Keys => this.history.Keys;
-        IEnumerable<int> IReadOnlyDictionary<string, int>.Values => this.history.Values.Select(s => s.Count);
-        ICollection<string> IDictionary<string, int>.Keys => this.history.Keys;
-        ICollection<int> IDictionary<string, int>.Values => new ReadOnlyCollection<int>(this.history.Values.Select(s => s.Count).ToArray());
+        IEnumerable<string> IReadOnlyDictionary<string, int>.Keys => this.statuses.Keys;
+        IEnumerable<int> IReadOnlyDictionary<string, int>.Values => this.statuses.Values.Select(s => s.Count);
+        ICollection<string> IDictionary<string, int>.Keys => this.statuses.Keys;
+        ICollection<int> IDictionary<string, int>.Values => new ReadOnlyCollection<int>(this.statuses.Values.Select(s => s.Count).ToArray());
 
 
         public bool IsReadOnly => true;
@@ -78,17 +82,17 @@ namespace KzLibraries.EventHandlerHistory
 
         public Status GetPropertyChangedCountStatus(string propertyName)
         {
-            if (this.history.TryGetValue(propertyName, out var status))
+            if (this.statuses.TryGetValue(propertyName, out var status))
                 return status;
 
             status = new Status(propertyName);
-            this.history.Add(propertyName, status);
+            this.statuses.Add(propertyName, status);
             return status;
         }
 
         public int GetPropertyChangedCount(string propertyName)
         {
-            this.history.TryGetValue(propertyName, out var status);
+            this.statuses.TryGetValue(propertyName, out var status);
             return status?.Count ?? 0;
         }
 
@@ -99,15 +103,15 @@ namespace KzLibraries.EventHandlerHistory
             return true;
         }
         public IEnumerator<KeyValuePair<string, int>> GetEnumerator()
-            => this.history.Select(pair => new KeyValuePair<string, int>(pair.Key, pair.Value.Count)).GetEnumerator();
+            => this.statuses.Select(pair => new KeyValuePair<string, int>(pair.Key, pair.Value.Count)).GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
-        public bool Contains(KeyValuePair<string, int> item) => ((ICollection<KeyValuePair<string, int>>)history).Contains(item);
+        public bool Contains(KeyValuePair<string, int> item) => ((ICollection<KeyValuePair<string, int>>)statuses).Contains(item);
 
         void IDictionary<string, int>.Add(string key, int value) => throw new NotImplementedException();
         void ICollection<KeyValuePair<string, int>>.Add(KeyValuePair<string, int> item) => throw new NotImplementedException();
         void ICollection<KeyValuePair<string, int>>.Clear() => throw new NotImplementedException();
-        void ICollection<KeyValuePair<string, int>>.CopyTo(KeyValuePair<string, int>[] array, int arrayIndex) => ((ICollection<KeyValuePair<string, int>>)this.history).CopyTo(array, arrayIndex);
+        void ICollection<KeyValuePair<string, int>>.CopyTo(KeyValuePair<string, int>[] array, int arrayIndex) => ((ICollection<KeyValuePair<string, int>>)this.statuses).CopyTo(array, arrayIndex);
         bool IDictionary<string, int>.Remove(string key) => throw new NotImplementedException();
         bool ICollection<KeyValuePair<string, int>>.Remove(KeyValuePair<string, int> item) => throw new NotImplementedException();
 
