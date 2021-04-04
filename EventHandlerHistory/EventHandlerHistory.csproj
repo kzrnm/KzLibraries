@@ -9,7 +9,7 @@
     <Description>EventHandler's event history wrapper</Description>
 
     <PackageId>EventHandlerHistory</PackageId>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
   </PropertyGroup>
 
