@@ -115,6 +115,25 @@ namespace KzLibraries.EventHandlerHistory
             numberStatus.Count.Should().Be(2);
             textStatus.Count.Should().Be(1);
         }
-    }
 
+        [Fact]
+        public void Clear()
+        {
+            var notifyPropertyChanged = new NotifyPropertyChanged();
+            var history = new PropertyChangedHistory(notifyPropertyChanged);
+            notifyPropertyChanged.Number = 2;
+            notifyPropertyChanged.Text = "foo";
+            notifyPropertyChanged.Number = 0;
+            notifyPropertyChanged.Text = "foo1";
+            notifyPropertyChanged.Number = 1;
+            notifyPropertyChanged.Text = "foo2";
+            notifyPropertyChanged.Number = 2;
+            notifyPropertyChanged.Text = "foo3";
+            notifyPropertyChanged.Number = 3;
+
+            history.Clear();
+            history.History.Should().BeEmpty();
+            history.Should().BeEmpty();
+        }
+    }
 }

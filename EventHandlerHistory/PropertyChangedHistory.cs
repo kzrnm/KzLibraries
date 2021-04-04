@@ -60,7 +60,11 @@ namespace KzLibraries.EventHandlerHistory
         private readonly List<string> history;
         public ReadOnlyCollection<string> History { get; }
 
-
+        public void Clear()
+        {
+            this.history.Clear();
+            this.statuses.Clear();
+        }
         int ICollection<KeyValuePair<string, int>>.Count => this.statuses.Count;
         int IReadOnlyCollection<KeyValuePair<string, int>>.Count => this.statuses.Count;
 
@@ -110,7 +114,6 @@ namespace KzLibraries.EventHandlerHistory
 
         void IDictionary<string, int>.Add(string key, int value) => throw new NotImplementedException();
         void ICollection<KeyValuePair<string, int>>.Add(KeyValuePair<string, int> item) => throw new NotImplementedException();
-        void ICollection<KeyValuePair<string, int>>.Clear() => throw new NotImplementedException();
         void ICollection<KeyValuePair<string, int>>.CopyTo(KeyValuePair<string, int>[] array, int arrayIndex) => ((ICollection<KeyValuePair<string, int>>)this.statuses).CopyTo(array, arrayIndex);
         bool IDictionary<string, int>.Remove(string key) => throw new NotImplementedException();
         bool ICollection<KeyValuePair<string, int>>.Remove(KeyValuePair<string, int> item) => throw new NotImplementedException();
@@ -125,6 +128,7 @@ namespace KzLibraries.EventHandlerHistory
                 if (disposing)
                 {
                     this.notifyPropertyChanged.PropertyChanged -= this.NotifyPropertyChanged_PropertyChanged;
+                    this.Clear();
                 }
 
                 disposedValue = true;
