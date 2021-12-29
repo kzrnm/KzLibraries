@@ -1,8 +1,7 @@
-using FluentAssertions;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using FluentAssertions;
 using Xunit;
 
 namespace KzLibraries.EventHandlerHistory

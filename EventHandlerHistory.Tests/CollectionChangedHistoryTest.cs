@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using FluentAssertions;
 using Xunit;
 
 namespace KzLibraries.EventHandlerHistory
