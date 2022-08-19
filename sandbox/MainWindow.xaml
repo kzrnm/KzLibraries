@@ -4,15 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:kz="urn:kzrnm-wpf/controls"
+    xmlns:ktk="urn:kzrnm-wpf/toolkit"
     xmlns:local="clr-namespace:sandbox"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="800"
     Height="450"
+    ktk:IocBehavior.AutoViewModel="{x:Type local:MainViewModel}"
     mc:Ignorable="d">
-    <Window.DataContext>
-        <local:MainViewModel />
-    </Window.DataContext>
     <StackPanel>
         <ComboBox kz:ComboBoxBehavior.IsFirstEmpty="True">
             <ComboBoxItem>1</ComboBoxItem>
