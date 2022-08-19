@@ -10,6 +10,7 @@
 
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
+    <PathMap>$(MSBuildProjectDirectory)=.</PathMap>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -18,15 +19,11 @@
 
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <SourceRoot>_</SourceRoot>
   </PropertyGroup>
 
   <ItemGroup>
-    <SourceRoot Condition="'$(Configuration)' == 'Release'" Include="/_/"/>
-
     <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="" Visible="false" />
-
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
