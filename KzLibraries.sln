@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7C42CF3A-7E91-47E5-8B42-44F5A4F2A9F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KzWpfToolkit", "KzWpfControl.Toolkit\KzWpfToolkit.csproj", "{77936DE6-EBDE-4BFB-9B5E-F4C8C20F35D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KzWpfToolkit.Test", "KzWpfToolkit.Test\KzWpfToolkit.Test.csproj", "{5DD070E7-94AC-438C-A671-4CDF5CDAB883}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +45,21 @@ Global
 		{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{509482C8-4A7A-4CC9-B49C-9E37F95AEA61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77936DE6-EBDE-4BFB-9B5E-F4C8C20F35D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77936DE6-EBDE-4BFB-9B5E-F4C8C20F35D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77936DE6-EBDE-4BFB-9B5E-F4C8C20F35D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77936DE6-EBDE-4BFB-9B5E-F4C8C20F35D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD070E7-94AC-438C-A671-4CDF5CDAB883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD070E7-94AC-438C-A671-4CDF5CDAB883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD070E7-94AC-438C-A671-4CDF5CDAB883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD070E7-94AC-438C-A671-4CDF5CDAB883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8C71CA9C-FE8C-411A-9EEC-929D9C1FE577} = {7C42CF3A-7E91-47E5-8B42-44F5A4F2A9F8}
+		{5DD070E7-94AC-438C-A671-4CDF5CDAB883} = {7C42CF3A-7E91-47E5-8B42-44F5A4F2A9F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C580418-BD95-4FDF-8F34-99DA1805F794}

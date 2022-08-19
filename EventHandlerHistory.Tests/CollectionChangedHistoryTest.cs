@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using FluentAssertions;
-using Xunit;
 
 namespace Kzrnm.EventHandlerHistory
 {
