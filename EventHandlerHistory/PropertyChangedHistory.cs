@@ -127,7 +127,7 @@ namespace Kzrnm.EventHandlerHistory
             {
                 if (disposing)
                 {
-                    notifyPropertyChanged.PropertyChanged -= NotifyPropertyChanged_PropertyChanged;
+                    NotifyPropertyChanged.PropertyChanged -= NotifyPropertyChanged_PropertyChanged;
                     Clear();
                 }
 
