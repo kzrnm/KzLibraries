@@ -3,33 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace KzLibraries.EventHandlerHistory
+namespace Kzrnm.EventHandlerHistory
 {
     public class CollectionChangedHistory : IReadOnlyList<NotifyCollectionChangedEventArgs>, IDisposable
     {
         private readonly List<NotifyCollectionChangedEventArgs> history;
-        public void Clear() => this.history.Clear();
+        public void Clear() => history.Clear();
 
-        public int Count => this.history.Count;
-        public NotifyCollectionChangedEventArgs this[int index] => this.history[index];
-        public NotifyCollectionChangedEventArgs First => this.history[0];
-        public NotifyCollectionChangedEventArgs Last => this.history[this.history.Count - 1];
+        public int Count => history.Count;
+        public NotifyCollectionChangedEventArgs this[int index] => history[index];
+        public NotifyCollectionChangedEventArgs First => history[0];
+        public NotifyCollectionChangedEventArgs Last => history[history.Count - 1];
 
         public CollectionChangedHistory(INotifyCollectionChanged notifyCollectionChanged)
         {
-            this.history = new List<NotifyCollectionChangedEventArgs>();
-            this.notifyCollectionChanged = notifyCollectionChanged;
-            this.notifyCollectionChanged.CollectionChanged += this.NotifyCollectionChanged_CollectionChanged;
+            history = new List<NotifyCollectionChangedEventArgs>();
+            NotifyCollectionChanged = notifyCollectionChanged;
+            NotifyCollectionChanged.CollectionChanged += NotifyCollectionChanged_CollectionChanged;
         }
-        private readonly INotifyCollectionChanged notifyCollectionChanged;
+        private INotifyCollectionChanged NotifyCollectionChanged { get; }
 
         private void NotifyCollectionChanged_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            this.history.Add(e);
+            history.Add(e);
         }
 
-        public IEnumerator<NotifyCollectionChangedEventArgs> GetEnumerator() => this.history.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => this.history.GetEnumerator();
+        public IEnumerator<NotifyCollectionChangedEventArgs> GetEnumerator() => history.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => history.GetEnumerator();
 
         #region IDisposable Support
         private bool disposedValue = false; // 重複する呼び出しを検出
@@ -40,7 +40,7 @@ namespace KzLibraries.EventHandlerHistory
             {
                 if (disposing)
                 {
-                    this.notifyCollectionChanged.CollectionChanged -= this.NotifyCollectionChanged_CollectionChanged;
+                    NotifyCollectionChanged.CollectionChanged -= NotifyCollectionChanged_CollectionChanged;
                 }
 
                 disposedValue = true;

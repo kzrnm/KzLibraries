@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <RootNamespace>KzLibraries.EventHandlerHistory</RootNamespace>
@@ -7,17 +7,12 @@
     <Nullable>enable</Nullable>
 
     <Description>EventHandler's event history wrapper</Description>
-
+    <RootNamespace>Kzrnm.EventHandlerHistory</RootNamespace>
     <PackageId>EventHandlerHistory</PackageId>
-    <Version>0.0.5</Version>
+    <Version>0.1.0</Version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <PackageTags>wpf,winforms,test</PackageTags>
+  </PropertyGroup>
 
 </Project>

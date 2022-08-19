@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using FluentAssertions;
 using Xunit;
 
-namespace KzLibraries.EventHandlerHistory
+namespace Kzrnm.EventHandlerHistory
 {
     public class PopertyChangedHistoryTest
     {

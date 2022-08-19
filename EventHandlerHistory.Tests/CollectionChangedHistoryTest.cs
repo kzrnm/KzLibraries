@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using FluentAssertions;
 using Xunit;
 
-namespace KzLibraries.EventHandlerHistory
+namespace Kzrnm.EventHandlerHistory
 {
     public class CollectionChangedHistoryTest
     {

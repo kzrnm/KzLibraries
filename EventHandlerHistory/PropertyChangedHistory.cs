@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
-namespace KzLibraries.EventHandlerHistory
+namespace Kzrnm.EventHandlerHistory
 {
     public class Status : IEquatable<Status>
     {
@@ -13,13 +13,13 @@ namespace KzLibraries.EventHandlerHistory
         public int Count { internal set; get; }
         public Status(string name, int defaultCount = 0)
         {
-            this.Name = name;
-            this.Count = defaultCount;
+            Name = name;
+            Count = defaultCount;
         }
 
         public override string ToString() => $"{Name}: {Count}";
         public override int GetHashCode()
-            => this.Name.GetHashCode() ^ this.Count.GetHashCode();
+            => Name.GetHashCode() ^ Count.GetHashCode();
         public override bool Equals(object? obj)
         {
             if (obj is Status other)
@@ -30,31 +30,31 @@ namespace KzLibraries.EventHandlerHistory
         {
             if (other == null)
                 return false;
-            return this.Name == other.Name && this.Count == other.Count;
+            return Name == other.Name && Count == other.Count;
         }
     }
     public class PropertyChangedHistory : IDictionary<string, int>, IReadOnlyDictionary<string, int>, IDisposable
     {
         public PropertyChangedHistory(INotifyPropertyChanged notifyPropertyChanged)
         {
-            this.history = new List<string>();
-            this.History = new ReadOnlyCollection<string>(this.history);
-            this.statuses = new Dictionary<string, Status>();
-            this.notifyPropertyChanged = notifyPropertyChanged;
+            history = new List<string>();
+            History = new ReadOnlyCollection<string>(history);
+            statuses = new Dictionary<string, Status>();
+            NotifyPropertyChanged = notifyPropertyChanged;
 
-            notifyPropertyChanged.PropertyChanged += this.NotifyPropertyChanged_PropertyChanged;
+            notifyPropertyChanged.PropertyChanged += NotifyPropertyChanged_PropertyChanged;
         }
 
         private void NotifyPropertyChanged_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            this.history.Add(e.PropertyName);
-            if (this.statuses.TryGetValue(e.PropertyName, out var status))
+            history.Add(e.PropertyName);
+            if (statuses.TryGetValue(e.PropertyName, out var status))
                 status.Count++;
             else
-                this.statuses.Add(e.PropertyName, new Status(e.PropertyName, 1));
+                statuses.Add(e.PropertyName, new Status(e.PropertyName, 1));
         }
 
-        private readonly INotifyPropertyChanged notifyPropertyChanged;
+        private INotifyPropertyChanged NotifyPropertyChanged { get; }
 
         private readonly Dictionary<string, Status> statuses;
         private readonly List<string> history;
@@ -62,59 +62,59 @@ namespace KzLibraries.EventHandlerHistory
 
         public void Clear()
         {
-            this.history.Clear();
-            this.statuses.Clear();
+            history.Clear();
+            statuses.Clear();
         }
-        int ICollection<KeyValuePair<string, int>>.Count => this.statuses.Count;
-        int IReadOnlyCollection<KeyValuePair<string, int>>.Count => this.statuses.Count;
+        int ICollection<KeyValuePair<string, int>>.Count => statuses.Count;
+        int IReadOnlyCollection<KeyValuePair<string, int>>.Count => statuses.Count;
 
-        IEnumerable<string> IReadOnlyDictionary<string, int>.Keys => this.statuses.Keys;
-        IEnumerable<int> IReadOnlyDictionary<string, int>.Values => this.statuses.Values.Select(s => s.Count);
-        ICollection<string> IDictionary<string, int>.Keys => this.statuses.Keys;
-        ICollection<int> IDictionary<string, int>.Values => new ReadOnlyCollection<int>(this.statuses.Values.Select(s => s.Count).ToArray());
+        IEnumerable<string> IReadOnlyDictionary<string, int>.Keys => statuses.Keys;
+        IEnumerable<int> IReadOnlyDictionary<string, int>.Values => statuses.Values.Select(s => s.Count);
+        ICollection<string> IDictionary<string, int>.Keys => statuses.Keys;
+        ICollection<int> IDictionary<string, int>.Values => new ReadOnlyCollection<int>(statuses.Values.Select(s => s.Count).ToArray());
 
 
         public bool IsReadOnly => true;
 
         int IDictionary<string, int>.this[string key]
         {
-            get => this.GetPropertyChangedCount(key);
+            get => GetPropertyChangedCount(key);
             set => throw new NotImplementedException();
         }
 
-        public int this[string key] => this.GetPropertyChangedCount(key);
+        public int this[string key] => GetPropertyChangedCount(key);
 
         public Status GetPropertyChangedCountStatus(string propertyName)
         {
-            if (this.statuses.TryGetValue(propertyName, out var status))
+            if (statuses.TryGetValue(propertyName, out var status))
                 return status;
 
             status = new Status(propertyName);
-            this.statuses.Add(propertyName, status);
+            statuses.Add(propertyName, status);
             return status;
         }
 
         public int GetPropertyChangedCount(string propertyName)
         {
-            this.statuses.TryGetValue(propertyName, out var status);
+            statuses.TryGetValue(propertyName, out var status);
             return status?.Count ?? 0;
         }
 
-        public bool ContainsKey(string key) => this.GetPropertyChangedCount(key) != 0;
+        public bool ContainsKey(string key) => GetPropertyChangedCount(key) != 0;
         public bool TryGetValue(string key, out int value)
         {
-            value = this.GetPropertyChangedCount(key);
+            value = GetPropertyChangedCount(key);
             return true;
         }
         public IEnumerator<KeyValuePair<string, int>> GetEnumerator()
-            => this.statuses.Select(pair => new KeyValuePair<string, int>(pair.Key, pair.Value.Count)).GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+            => statuses.Select(pair => new KeyValuePair<string, int>(pair.Key, pair.Value.Count)).GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         public bool Contains(KeyValuePair<string, int> item) => ((ICollection<KeyValuePair<string, int>>)statuses).Contains(item);
 
         void IDictionary<string, int>.Add(string key, int value) => throw new NotImplementedException();
         void ICollection<KeyValuePair<string, int>>.Add(KeyValuePair<string, int> item) => throw new NotImplementedException();
-        void ICollection<KeyValuePair<string, int>>.CopyTo(KeyValuePair<string, int>[] array, int arrayIndex) => ((ICollection<KeyValuePair<string, int>>)this.statuses).CopyTo(array, arrayIndex);
+        void ICollection<KeyValuePair<string, int>>.CopyTo(KeyValuePair<string, int>[] array, int arrayIndex) => ((ICollection<KeyValuePair<string, int>>)statuses).CopyTo(array, arrayIndex);
         bool IDictionary<string, int>.Remove(string key) => throw new NotImplementedException();
         bool ICollection<KeyValuePair<string, int>>.Remove(KeyValuePair<string, int> item) => throw new NotImplementedException();
 
@@ -127,8 +127,8 @@ namespace KzLibraries.EventHandlerHistory
             {
                 if (disposing)
                 {
-                    this.notifyPropertyChanged.PropertyChanged -= this.NotifyPropertyChanged_PropertyChanged;
-                    this.Clear();
+                    notifyPropertyChanged.PropertyChanged -= NotifyPropertyChanged_PropertyChanged;
+                    Clear();
                 }
 
                 disposedValue = true;
