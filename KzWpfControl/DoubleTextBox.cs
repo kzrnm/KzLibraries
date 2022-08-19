@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace KzLibraries.KzWpfControl
+namespace Kzrnm.Wpf.Controls
 {
     public class DoubleTextBox : TextBox
     {
@@ -46,7 +46,7 @@ namespace KzLibraries.KzWpfControl
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
             base.OnTextChanged(e);
-            this.DoubleText = this.Text;
+            DoubleText = Text;
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
-namespace KzLibraries.KzWpfControl
+namespace Kzrnm.Wpf.Controls
 {
     public static class TextBoxBehavior
     {
