@@ -1,10 +1,10 @@
 <Project>
 
   <PropertyGroup>
-    <Authors>naminodarie</Authors>
+    <Authors>kzrnm</Authors>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/naminodarie/KzLibraries</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/naminodarie/KzLibraries</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/kzrnm/KzLibraries</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kzrnm/KzLibraries</RepositoryUrl>
 
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)key.snk</AssemblyOriginatorKeyFile>
