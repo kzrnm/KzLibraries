@@ -9,10 +9,10 @@
 
     <Description>My WPF library for MVVM toolkit</Description>
 
-    <PackageId>KzWpfControl.Toolkit</PackageId>
+    <PackageId>KzWpfToolkit</PackageId>
     <Version>0.1.0</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>wpf</PackageTags>
+    <PackageTags>wpf,toolkit</PackageTags>
 
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
   </PropertyGroup>

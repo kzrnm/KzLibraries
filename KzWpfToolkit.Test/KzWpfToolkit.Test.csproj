@@ -26,6 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KzWpfControl.Toolkit\KzWpfToolkit.csproj" />
+    <ProjectReference Include="..\KzWpfToolkit\KzWpfToolkit.csproj" />
   </ItemGroup>
 </Project>
