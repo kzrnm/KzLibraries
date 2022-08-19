@@ -6,8 +6,6 @@
     <PackageProjectUrl>https://github.com/kzrnm/KzLibraries</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kzrnm/KzLibraries</RepositoryUrl>
 
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)key.snk</AssemblyOriginatorKeyFile>
     <PackageOutputPath>$(MSBuildThisFileDirectory)bin\Packages\$(Configuration)\</PackageOutputPath>
 
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
