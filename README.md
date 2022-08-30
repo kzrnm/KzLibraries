@@ -75,10 +75,10 @@ Set `urn:kzrnm-wpf/toolkit` to `xmlns`.
 <Window xmlns:kz="urn:kzrnm-wpf/toolkit">
 ```
 
-### IocBehavior
+### Ioc
 For `Ioc`.
 
-`IocBehavior.AutoViewModel`: Auto set view model
+`Ioc.AutoViewModel`: Auto set view model
 
 ```xml
 <Window

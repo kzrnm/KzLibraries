@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.DependencyInjection;
 using Kzrnm.Wpf.Toolkit;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
@@ -14,23 +13,23 @@ namespace KzWpfToolkit.Test
 
         public IocBehaviorTests()
         {
-            var ioc = new Ioc();
+            var ioc = new CommunityToolkit.Mvvm.DependencyInjection.Ioc();
             ioc.ConfigureServices(
                 new ServiceCollection()
                 .AddSingleton<DefinedType>()
                 .BuildServiceProvider());
-            IocBehavior.Ioc = ioc;
+            Kzrnm.Wpf.Toolkit.Ioc.DefaultIoc = ioc;
         }
 
         [UIFact]
         public void FrameworkElementAutoViewModel()
         {
             var obj = new FrameworkElement();
-            IocBehavior.SetAutoViewModel(obj, typeof(DefinedType));
-            IocBehavior.GetAutoViewModel(obj).Should().Be(typeof(DefinedType));
+            Kzrnm.Wpf.Toolkit.Ioc.SetAutoViewModel(obj, typeof(DefinedType));
+            Ioc.GetAutoViewModel(obj).Should().Be(typeof(DefinedType));
             obj.DataContext.Should().Be(new DefinedType());
-            IocBehavior.SetAutoViewModel(obj, typeof(UndefinedType));
-            IocBehavior.GetAutoViewModel(obj).Should().Be(typeof(UndefinedType));
+            Kzrnm.Wpf.Toolkit.Ioc.SetAutoViewModel(obj, typeof(UndefinedType));
+            Ioc.GetAutoViewModel(obj).Should().Be(typeof(UndefinedType));
             obj.DataContext.Should().BeNull();
         }
 
@@ -38,10 +37,10 @@ namespace KzWpfToolkit.Test
         public void DependencyObjectAutoViewModel()
         {
             var obj = new DependencyObject();
-            IocBehavior.SetAutoViewModel(obj, typeof(DefinedType));
-            IocBehavior.GetAutoViewModel(obj).Should().Be(typeof(DefinedType));
-            IocBehavior.SetAutoViewModel(obj, typeof(UndefinedType));
-            IocBehavior.GetAutoViewModel(obj).Should().Be(typeof(UndefinedType));
+            Kzrnm.Wpf.Toolkit.Ioc.SetAutoViewModel(obj, typeof(DefinedType));
+            Ioc.GetAutoViewModel(obj).Should().Be(typeof(DefinedType));
+            Kzrnm.Wpf.Toolkit.Ioc.SetAutoViewModel(obj, typeof(UndefinedType));
+            Ioc.GetAutoViewModel(obj).Should().Be(typeof(UndefinedType));
         }
     }
 

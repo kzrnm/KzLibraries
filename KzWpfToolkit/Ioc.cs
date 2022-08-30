@@ -1,20 +1,20 @@
-using CommunityToolkit.Mvvm.DependencyInjection;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using CommunityToolkitIoc = CommunityToolkit.Mvvm.DependencyInjection.Ioc;
 
 namespace Kzrnm.Wpf.Toolkit
 {
-    public static class IocBehavior
+    public static class Ioc
     {
-        public static Ioc Ioc { set; get; } = Ioc.Default;
+        public static CommunityToolkitIoc DefaultIoc { set; get; } = CommunityToolkitIoc.Default;
         public static Type GetAutoViewModel(DependencyObject obj) => (Type)obj.GetValue(AutoViewModelProperty);
         public static void SetAutoViewModel(DependencyObject obj, Type value) => obj.SetValue(AutoViewModelProperty, value);
         public static readonly DependencyProperty AutoViewModelProperty =
             DependencyProperty.RegisterAttached(
                 "AutoViewModel",
                 typeof(Type),
-                typeof(IocBehavior),
+                typeof(Ioc),
                 new FrameworkPropertyMetadata(null,
                     FrameworkPropertyMetadataOptions.NotDataBindable,
                     AutoViewModelChanged));
@@ -23,8 +23,10 @@ namespace Kzrnm.Wpf.Toolkit
         {
             if (DesignerProperties.GetIsInDesignMode(d))
                 return;
-            if (d is FrameworkElement elm && e.NewValue is Type type)
-                elm.DataContext = Ioc.GetService(type);
+            if (d is FrameworkElement elm)
+            {
+                elm.DataContext = e.NewValue is Type type ? DefaultIoc.GetService(type) : null;
+            }
         }
     }
 

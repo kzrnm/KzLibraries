@@ -10,7 +10,7 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    ktk:IocBehavior.AutoViewModel="{x:Type local:MainViewModel}"
+    ktk:Ioc.AutoViewModel="{x:Type local:MainViewModel}"
     mc:Ignorable="d">
     <StackPanel>
         <ComboBox kz:ComboBoxBehavior.IsFirstEmpty="True">
